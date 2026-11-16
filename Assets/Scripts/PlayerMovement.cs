@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] protected float movement_speed = 10f;
+    [SerializeField] protected float normal_movement_speed = 10f;
+    private float movement_speed = 10f;
     [SerializeField] protected float jump_height = 21f;
     [SerializeField] protected float max_fall_speed = 20f;
     private float animation_speed = 0f;
@@ -23,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         jumpsfxSource.volume = PlayerPrefs.GetFloat("volume", 0.1f);
+    }
+
+    public void IncreaseSpeed()
+    {
+        movement_speed = normal_movement_speed * 1.1f;
     }
 
     public void OnMove(InputValue value)
@@ -65,12 +71,6 @@ public class PlayerMovement : MonoBehaviour
         float direction = moveInput.x;
         animation_speed = Mathf.MoveTowards(animation_speed, direction, 4f * Time.deltaTime);
         animator.SetFloat("Speed", animation_speed);
-        if (direction > 0.1f || direction < -0.1f) {
-            animator.SetBool("IsMoving", true);
-        } else {
-            animator.SetBool("IsMoving", false);
-        }
-        Debug.Log(animation_speed);
     }
 
     private void FixedUpdate()
