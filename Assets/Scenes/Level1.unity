@@ -1506,7 +1506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameRules
   playerObject: {fileID: 65522572}
   start_pos: {x: -14, y: -6.7}
-  next_level: Level3
+  next_level: VictoryScreen
   current_level: Level2
   timer: {fileID: 1075675369}
   level_timer: 0

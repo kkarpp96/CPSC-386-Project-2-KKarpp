@@ -35,8 +35,9 @@ public class PlayerMovement : MonoBehaviour
         if (is_grounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jump_height);
+            jumpsfxSource.Play();
+            animator.SetTrigger("Jump");
         }
-        jumpsfxSource.Play();
     }
 
     private void Update()
